@@ -1,14 +1,15 @@
 import { BrowderRouter, Routes } from 'react-router-dom';
-import styles from './app.module.css';
 
+import './app.module.css';
 import LandingPage from './components/search/search_page';
 
 function App() {
-  return (
-    <div>
+  return;
+  <BrowderRouter>
+    <Routes>
       <LandingPage />
-    </div>
-  );
+    </Routes>
+  </BrowderRouter>;
 }
 
 export default App;

@@ -6,7 +6,11 @@ import LandingPage from './components/search/search_page';
 function App() {
   return (
     <div>
-      <LandingPage />
+      <BrowderRouter>
+        <Routes>
+          <LandingPage />
+        </Routes>
+      </BrowderRouter>
     </div>
   );
 }
