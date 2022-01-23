@@ -7,17 +7,19 @@ const MapContainer = ({ searchPlace }) => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
     const container = document.getElementById('myMap');
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 2,
+      center: new kakao.maps.LatLng(37.50326772177081, 126.94777446345785),
+      level: 3,
     };
     const map = new kakao.maps.Map(container, options);
 
     const ps = new kakao.maps.services.Places();
-
+    // 키워드로 장소 검색
     ps.keywordSearch(searchPlace, placesSearchCB);
-
+    // 키워드 검색 완료 시, 호출되는 콜백함수
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가
         let bounds = new kakao.maps.LatLngBounds();
 
         for (let i = 0; i < data.length; i++) {
@@ -30,13 +32,10 @@ const MapContainer = ({ searchPlace }) => {
     }
 
     function displayMarker(place) {
-      let marker = new kakao.maps.Marker(
-        {
-          map: map,
-          position: new kakao.maps.LatLng(place.y, place.x),
-        },
-        [searchPlace]
-      );
+      let marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(place.y, place.x),
+      });
 
       // 마커에 클릭이벤트를 등록합니다
       kakao.maps.event.addListener(marker, 'click', function () {

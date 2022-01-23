@@ -5,6 +5,7 @@ import SearchPlace from './components/search/search_page';
 function App() {
   return (
     <div className={styles.app}>
+      <MapContainer searchPlace={place} />
       <SearchPlace />
     </div>
   );

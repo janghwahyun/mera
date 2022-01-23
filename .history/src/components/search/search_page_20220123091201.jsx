@@ -8,6 +8,7 @@ function SearchPlace() {
   const onChange = e => {
     setInputText(e.target.value);
   };
+  console.log(e.target.value);
 
   const handleSubmit = e => {
     e.preventDefault();

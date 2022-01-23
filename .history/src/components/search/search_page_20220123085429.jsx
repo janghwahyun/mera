@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import MapContainer from '../container/map_container';
+import MapContainer from './Sections/MapContainer';
 
-function SearchPlace() {
+function LandingPage() {
   const [InputText, setInputText] = useState('');
   const [Place, setPlace] = useState('');
 
@@ -17,7 +17,7 @@ function SearchPlace() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="inputForm" onSubmit={handleSubmit}>
         <input
           placeholder="검색어를 입력하세요"
           onChange={onChange}
@@ -30,4 +30,4 @@ function SearchPlace() {
   );
 }
 
-export default SearchPlace;
+export default LandingPage;

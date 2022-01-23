@@ -28,7 +28,22 @@ const MapContainer = ({ searchPlace }) => {
         map.setBounds(bounds);
       }
     }
+    // 현재 나의 위치
+    const locationLoadSuccess = pos => {
+      const currentPos = new kakao.maps.LatLng(
+        pos.coords.latitude,
+        pos.coords.longitude
+      );
+      map.panTo(currentPos);
+    };
+    navigator.geolocation.getCurrentPosition(locationLoadSuccess);
 
+    const marker = new kakao.maps.Marker({
+      position: new kakao.maps.LatLng(33.450701, 126.570667), // 위도, 경도 입력
+    });
+
+    marker.setMap(null);
+    marker.setMap(map);
     function displayMarker(place) {
       let marker = new kakao.maps.Marker(
         {

@@ -18,7 +18,7 @@ const MapContainer = ({ searchPlace }) => {
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
-        let bounds = new kakao.maps.LatLngBounds();
+        let bounds = new kakao.maps.LatLngBounds(result[0].y, result[0].x);
 
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i]);

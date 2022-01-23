@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import MapContainer from '../container/map_container';
 
-function SearchPlace() {
-  const [InputText, setInputText] = useState('');
-  const [Place, setPlace] = useState('');
+const SearchPlace = () => {
+  const [inputText, setInputText] = useState('');
+  const [place, setPlace] = useState('');
 
   const onChange = e => {
     setInputText(e.target.value);
@@ -11,23 +11,23 @@ function SearchPlace() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setPlace(InputText);
+    setPlace(inputText);
     setInputText('');
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="inputForm" onSubmit={handleSubmit}>
         <input
-          placeholder="검색어를 입력하세요"
+          placeholder="Search Place..."
           onChange={onChange}
-          value={InputText}
+          value={inputText}
         />
-        <button type="submit">검색</button>
+        <button type="submit">SEARCH</button>
       </form>
-      <MapContainer searchPlace={Place} />
+      <MapContainer searchPlace={place} />
     </>
   );
-}
+};
 
 export default SearchPlace;

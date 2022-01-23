@@ -28,6 +28,26 @@ const MapContainer = ({ searchPlace }) => {
         map.setBounds(bounds);
       }
     }
+    // 현재 나의 위치
+    const locationLoadSuccess = pos => {
+      const currentPos = new kakao.maps.LatLng(
+        pos.coords.latitude,
+        pos.coords.longitude
+      );
+      map.panTo(currentPos);
+    };
+    navigator.geolocation.getCurrentPosition(locationLoadSuccess);
+    
+    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+   if (status === kakao.maps.services.Status.OK) {
+      const detailAddr = !!result[0].road_address ? `<div>도로명주소 : ${result[0].road_address.address_name}</div>\n지번 주소 : ${result[0].address.address_name}`
+      const content = `<div class="bAddr">법정동 주소정보 : ${detailAddr}</div>`
+      marker.setPosition(mouseEvent.latLng)
+      marker.setMap(map)
+      infowindow.setContent(content)
+      infowindow.open(map, marker)
+   }
+})
 
     function displayMarker(place) {
       let marker = new kakao.maps.Marker(

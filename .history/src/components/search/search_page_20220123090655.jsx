@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MapContainer from '../container/map_container';
+import MapContainer from './container/MapContainer';
 
 function SearchPlace() {
   const [InputText, setInputText] = useState('');

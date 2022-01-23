@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import searchPlace from '../search/search_page';
 
 const { kakao } = window;
 

@@ -7,8 +7,8 @@ const MapContainer = ({ searchPlace }) => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
     const container = document.getElementById('myMap');
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 2,
+      center: new kakao.maps.LatLng(33.450701, 126.670667),
+      level: 3,
     };
     const map = new kakao.maps.Map(container, options);
 
@@ -37,6 +37,18 @@ const MapContainer = ({ searchPlace }) => {
         },
         [searchPlace]
       );
+ // 지도에 마커를 표시하는 함수입니다
+    function displayMarker(place, locPosition, message) {
+
+
+        var iwContent = message, // 인포윈도우에 표시할 내용
+            iwRemoveable = true;
+
+        // 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: iwContent,
+            removable: iwRemoveable
+        });
 
       // 마커에 클릭이벤트를 등록합니다
       kakao.maps.event.addListener(marker, 'click', function () {

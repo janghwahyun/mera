@@ -28,7 +28,14 @@ const MapContainer = ({ searchPlace }) => {
         map.setBounds(bounds);
       }
     }
-
+    const locationLoadSuccess = pos => {
+      const currentPos = new kakao.maps.LatLng(
+        pos.coords.latitude,
+        pos.coords.longitude
+      );
+      map.panTo(currentPos);
+    };
+    navigator.geolocation.getCurrentPosition(locationLoadSuccess);
     function displayMarker(place) {
       let marker = new kakao.maps.Marker(
         {
